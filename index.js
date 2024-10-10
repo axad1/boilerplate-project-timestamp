@@ -23,7 +23,7 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
-app.get("/api/:date", function (req, res) {
+app.get("/api/:date?", function (req, res) {
   let d = req.params.date;
   let date;
   if (!d) date = new Date();
@@ -31,7 +31,7 @@ app.get("/api/:date", function (req, res) {
     if (!isNaN(d)) d = parseInt(d);
     date = new Date(d);
   }
-  if (date.toString === "Invalid Date")
+  if (date.toString() === "Invalid Date")
     return res.json({
       error: "Invalid Date",
     });
